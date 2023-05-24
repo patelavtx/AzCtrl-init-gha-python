@@ -21,15 +21,15 @@ jobs:
       - run:  pip install -r requirements.txt
 
      #Log into Azure with azure_creds
-      - name: 'Az CLI login'
-        uses: azure/login@v1
-        with:
-          creds: '${{ secrets.AZURE_CREDENTIALs }}'
+      #- name: 'Az CLI login'
+      #  uses: azure/login@v1
+      #  with:
+      #    creds: '${{ secrets.AZURE_CREDENTIALs }}'
     
     # Run az commands to confirm access
-      - name: 'Run AZ commands'
-        run: |
-          az account show
+      #- name: 'Run AZ commands'
+      #  run: |
+      #    az account show
       
   # tf init; need to add backend.tf for state
       - name: terraform-init
@@ -61,12 +61,12 @@ jobs:
           ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
           TF_VAR_aviatrix_customer_id: ${{ secrets.CUSTOMER_ID}}
-          TF_VAR_application_id: ${{ secrets.TF_VAR_APPLICATION_ID}}
-          TF_VAR_application_key: ${{ secrets.TF_VAR_APPLICATION_KEY}}
-          TF_VAR_directory_id: ${{ secrets.TF_VAR_DIRECTORY_ID}}
-          TF_VAR_subscription_id: ${{ secrets.TF_VAR_SUBSCRIPTION_ID}}
+          TF_VAR_application_id: ${{ secrets.APPLICATION_ID}}
+          TF_VAR_application_key: ${{ secrets.APPLICATION_KEY}}
+          TF_VAR_directory_id: ${{ secrets.DIRECTORY_ID}}
+          TF_VAR_subscription_id: ${{ secrets.SUBSCRIPTION_ID}}
           TF_VAR_controller_name: ${{ vars.CONTROLLER_NAME}}
-          TF_VAR_controller_version: ${{ vars.CONTROLLER_VERSION}}
+          TF_VAR_controller_version: ${{ vars.CONTROLLER_VERSION }}
           TF_VAR_location: ${{ vars.LOCATION}}
         run: terraform plan
    
@@ -74,16 +74,16 @@ jobs:
       - name: terraform-apply
         id: apply
         env:
-          ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
-          ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
-          ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
-          ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
-          TF_VAR_aviatrix_customer_id: ${{ secrets.TF_VAR_AVIATRIX_CUSTOMER_ID}}
-          TF_VAR_application_id: ${{ secrets.TF_VAR_APPLICATION_ID}}
-          TF_VAR_application_key: ${{ secrets.TF_VAR_APPLICATION_KEY}}
-          TF_VAR_directory_id: ${{ secrets.TF_VAR_DIRECTORY_ID}}
-          TF_VAR_subscription_id: ${{ secrets.TF_VAR_SUBSCRIPTION_ID}}
+          ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET}}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          TF_VAR_aviatrix_customer_id: ${{ secrets.CUSTOMER_ID}}
+          TF_VAR_application_id: ${{ secrets.APPLICATION_ID}}
+          TF_VAR_application_key: ${{ secrets.APPLICATION_KEY}}
+          TF_VAR_directory_id: ${{ secrets.DIRECTORY_ID}}
+          TF_VAR_subscription_id: ${{ secrets.SUBSCRIPTION_ID}}
           TF_VAR_controller_name: ${{ vars.CONTROLLER_NAME}}
-          TF_VAR_controller_version: ${{ vars.CONTROLLER_VERSION}}
+          TF_VAR_controller_version: ${{ vars.CONTROLLER_VERSION }}
           TF_VAR_location: ${{ vars.LOCATION}}
         run: terraform apply -auto-approve
