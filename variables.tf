@@ -32,7 +32,7 @@ variable "application_key" {
 
 variable "enableinit" {
   type        = string
-  default = "false"
+  default = "true"
 }
 
 variable "enablecop" {
@@ -55,6 +55,7 @@ variable "app_name" {
 variable "aviatrix_customer_id" {
   type        = string
   description = "aviatrix customer license id"
+  default = "abupengrtest.com-abu-2fff4938-1674588744.93"
 }
 
 variable "avx_controller_admin_email" {
@@ -72,6 +73,7 @@ variable "avx_controller_admin_password" {
 variable "controller_name" {
   type        = string
   description = "Customized Name for Aviatrix Controller"
+  default = "AzController44"
 }
 variable "controller_subnet_cidr" {
   type        = string
