@@ -20,32 +20,26 @@ jobs:
           cache: 'pip'
       - run:  pip install -r requirements.txt
 
-      # Log into Azure with oidc integration
-      #- name: 'Az CLI login'
-      #  uses: azure/login@v1
-      #  with:
-      #    ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
-      #    ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
-      #    ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
-      #    ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+     #Log into Azure with azure_creds
+      - name: 'Az CLI login'
+        uses: azure/login@v1
+        with:
+          creds: '${{ secrets.AZURE_CREDENTIALs }}'
     
     # Run az commands to confirm access
-      #- name: 'Run AZ commands'
-      #  run: |
-      #    az account show
+      - name: 'Run AZ commands'
+        run: |
+          az account show
       
   # tf init; need to add backend.tf for state
       - name: terraform-init
         id: init
         env:
-          TF_VAR_resource_group_name: ${{ secrets.RESOURCE_GROUP_NAME}}
-          TF_VAR_storage_account_name: ${{ secrets.STORAGE_ACCOUNT_NAME}}
-          TF_VAR_container_name: ${{ secrets.CONTAINER_NAME}}
-          ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
-          ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
-          ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
-          ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
-        run: terraform init
+          ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET}}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+        run: terraform init 
   
   # Run Terraform stuff      
       - name: terraform fmt
@@ -62,11 +56,11 @@ jobs:
       - name: terraform-plan
         id: plan
         env:
-          ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
-          ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
-          ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
-          ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
-          TF_VAR_aviatrix_customer_id: ${{ secrets.TF_VAR_AVIATRIX_CUSTOMER_ID}}
+          ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET}}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          TF_VAR_aviatrix_customer_id: ${{ secrets.CUSTOMER_ID}}
           TF_VAR_application_id: ${{ secrets.TF_VAR_APPLICATION_ID}}
           TF_VAR_application_key: ${{ secrets.TF_VAR_APPLICATION_KEY}}
           TF_VAR_directory_id: ${{ secrets.TF_VAR_DIRECTORY_ID}}
