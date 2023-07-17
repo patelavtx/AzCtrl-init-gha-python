@@ -13,7 +13,7 @@ terraform {
     }
   }
 }
-/*
+
 aviatrix_controller_azure" {
   source             = "./modules/aviatrix_controller_azure"
   source  = "AviatrixSystems/azure-controller/aviatrix//modules/aviatrix_controller_azure"
@@ -115,5 +115,3 @@ module "copilot_build_azure" {
     module.aviatrix_controller_build
   ]
 }
-
-*/
