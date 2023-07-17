@@ -23,10 +23,10 @@ aviatrix_controller_azure" {
   create_custom_role = var.create_custom_role
 }
 */
-/*
+
 module "aviatrix_controller_build" {
   source  = "AviatrixSystems/azure-controller/aviatrix//modules/aviatrix_controller_build"
-  version = "2.0.2"
+  version = "2.1.0"
   #source = "./modules/aviatrix_controller_build"
   // please do not use special characters such as `\/"[]:|<>+=;,?*@&~!#$%^()_{}'` in the controller_name
   controller_name                           = var.controller_name
@@ -41,7 +41,7 @@ module "aviatrix_controller_build" {
 
 module "aviatrix_controller_initialize" {
   source  = "AviatrixSystems/azure-controller/aviatrix//modules/aviatrix_controller_initialize"
-  version = "2.0.2"
+  version = "2.1.0"
   #source                        = "./modules/aviatrix_controller_initialize"
   count              = var.enableinit ? 1 : 0
   avx_controller_public_ip      = module.aviatrix_controller_build.aviatrix_controller_public_ip_address
@@ -114,4 +114,3 @@ module "copilot_build_azure" {
     module.aviatrix_controller_build
   ]
 }
-*/

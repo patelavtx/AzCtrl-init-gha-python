@@ -49,13 +49,13 @@ variable "account_email" {
 variable "app_name" {
   type        = string
   description = "Azure AD App Name for Aviatrix Controller Build Up"
-  default     = "AzureSP-attila"
+  default     = "AzureSP-44"
 }
 
 variable "aviatrix_customer_id" {
   type        = string
   description = "aviatrix customer license id"
-  default = "abupengrtest.com-abu-2fff4938-1674588744.93"
+  default = "aviatrix.com-abu-1705ef96-1688314910.007643"
 }
 
 variable "avx_controller_admin_email" {
