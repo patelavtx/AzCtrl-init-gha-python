@@ -7,26 +7,26 @@ variable "access_account_name" {
 
 variable "directory_id" {
   type        = string
-  default = "false"
+  default = ""
 }
 
 
 variable "subscription_id" {
   type        = string
-  default = "false"
+  default = ""
 }
 
 
 
 variable "application_id" {
   type        = string
-  default = "false"
+  default = ""
 }
 
 
 variable "application_key" {
   type        = string
-  default = "false"
+  default = ""
 }
 
 
