@@ -24,7 +24,6 @@ aviatrix_controller_azure" {
 }
 */
 
-/*
 module "aviatrix_controller_build" {
   source  = "AviatrixSystems/azure-controller/aviatrix//modules/aviatrix_controller_build"
   version = "2.0.2"
@@ -115,4 +114,4 @@ module "copilot_build_azure" {
     module.aviatrix_controller_build
   ]
 }
-*/
+
