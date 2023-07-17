@@ -23,7 +23,7 @@ aviatrix_controller_azure" {
   create_custom_role = var.create_custom_role
 }
 */
-
+/*
 module "aviatrix_controller_build" {
   source  = "AviatrixSystems/azure-controller/aviatrix//modules/aviatrix_controller_build"
   version = "2.0.2"
@@ -114,3 +114,4 @@ module "copilot_build_azure" {
     module.aviatrix_controller_build
   ]
 }
+*/
