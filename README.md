@@ -1,6 +1,6 @@
 # AzCtrl-noninit
 
-## Test 2 >  update env on customer runner
+## Test Nov7  > test GHA  hosted runner = build + init 
 
 ## Note -  Process after deploying either from docker or GHA
 
