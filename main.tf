@@ -25,6 +25,7 @@ aviatrix_controller_azure" {
 */
 
 
+/*
 module "aviatrix_controller_build" {
   source  = "AviatrixSystems/azure-controller/aviatrix//modules/aviatrix_controller_build"
   version = "2.1.0"
@@ -68,7 +69,7 @@ module "aviatrix_controller_initialize" {
 
 }
 
-
+*/
 
 /*
 # Modify instance size and disk size under the module
